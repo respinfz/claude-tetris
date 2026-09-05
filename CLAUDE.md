@@ -21,8 +21,8 @@ Then visit `http://localhost:8000` if using a server. Changes to `game.js`/`styl
 
 All game logic lives in `game.js` (single file, no modules). Key pieces:
 
-- **Board model**: `board` is a `ROWS × COLS` matrix (20×10) where each cell is `0` (empty) or a color index `1–7` identifying which piece type locked there.
-- **Pieces**: `PIECES` defines the 7 tetrominoes as square matrices. `current` and `next` are piece instances (`{ type, shape, x, y }`); `randomPiece()` creates a new one centered at the top.
+- **Board model**: `board` is a `ROWS × COLS` matrix (20×10) where each cell is `0` (empty) or a color index `1–8` identifying which piece type locked there.
+- **Pieces**: `PIECES` defines the 7 standard tetrominoes plus an 8th "challenge" piece — the *nut* (`type` 8), a 3×3 ring with a hollow center (`[[8,8,8],[8,0,8],[8,8,8]]`). `current` and `next` are piece instances (`{ type, shape, x, y }`); `randomPiece()` creates a new one centered at the top, picking the nut with probability `NUT_CHANCE` (~1/15) and one of the 7 standard pieces otherwise. The nut's shape is symmetric, so `rotateCW()` is a visual no-op for it; its hollow center is a `0` cell, so `collide`/`merge`/`clearLines` need no special-casing — the empty center simply blocks the row from clearing until lower lines clear.
 - **Rotation**: `rotateCW()` transposes + reverses rows of the shape matrix. `tryRotate()` wraps it with basic wall kicks — it retries the rotation at x-offsets `[0, -1, 1, -2, 2]` and keeps the first that doesn't collide.
 - **Collision**: `collide(shape, ox, oy)` is the single source of truth for whether a shape at a given offset is out of bounds or overlaps locked blocks. Movement, rotation, ghost-piece projection, and spawn-collision (game over) all route through it.
 - **Game loop**: `loop(ts)` runs via `requestAnimationFrame`, accumulating elapsed time in `dropAccum` and advancing the piece down one row (or locking it) once `dropAccum >= dropInterval`.
