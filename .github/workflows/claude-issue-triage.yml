@@ -80,8 +80,15 @@ jobs:
                - "triaged" siempre, al final.
                Solo AÑADE labels — nunca quites labels que ya haya puesto una persona.
 
-            5. Redacta un diagnóstico técnico en ESPAÑOL (el repo usa español en comentarios y UI)
-               con esta estructura exacta, empezando por el marcador HTML literal en la primera línea:
+            5. Redacta un diagnóstico técnico en ESPAÑOL (el repo usa español en comentarios y UI).
+               Todo lo que comentes debe estar en formato Markdown que GitHub pueda renderizar
+               (GitHub Flavored Markdown): encabezados con `#`, listas con `-`, bloques de código
+               con triple backtick y lenguaje (```js), código en línea con backticks simples,
+               tablas con `|`, negritas con `**`, checklists con `- [ ]`, y enlaces `[texto](url)`.
+               No uses HTML salvo el comentario marcador `<!-- claude-triage -->`. Deja una línea
+               en blanco antes y después de cada encabezado, lista y bloque de código para que
+               GitHub los parsee correctamente.
+               Usa esta estructura exacta, empezando por el marcador HTML literal en la primera línea:
 
                <!-- claude-triage -->
                ## 🔍 Diagnóstico automático
