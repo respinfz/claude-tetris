@@ -122,6 +122,25 @@ body.light-theme {
   transform: translateX(20px);
 }
 
+/* ---- Botón de sonido ---- */
+.icon-btn {
+  flex-shrink: 0;
+  border: none;
+  background: var(--color-switch-bg);
+  color: var(--color-text);
+  border-radius: 6px;
+  width: 30px;
+  height: 24px;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.icon-btn[aria-pressed="false"] {
+  opacity: 0.4;
+}
+
 .game-container {
   display: flex;
   gap: 20px;
@@ -171,6 +190,29 @@ body.light-theme {
   border: 1px solid var(--color-board-border);
   background: var(--color-board-bg);
   border-radius: 4px;
+}
+
+.hint {
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--color-controls-text);
+}
+
+#combo {
+  display: inline-block;
+  align-self: flex-start;
+  transform-origin: left center;
+  transition: color 0.15s;
+}
+
+.combo-pulse {
+  animation: combo-pulse 0.35s ease-out;
+}
+
+@keyframes combo-pulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.25); }
+  100% { transform: scale(1); }
 }
 
 /* ---- Controles ---- */

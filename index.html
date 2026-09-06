@@ -10,6 +10,7 @@
   <div class="wrapper">
     <div class="title-bar">
       <h1 class="game-title">TETRIS</h1>
+      <button id="sound-toggle" class="icon-btn" type="button" aria-pressed="true" title="Activar/silenciar sonido">🔊</button>
       <label class="theme-switch" title="Cambiar tema claro/oscuro">
         <input type="checkbox" id="theme-toggle" aria-label="Modo claro" />
         <span class="slider"></span>
@@ -33,8 +34,21 @@
         </div>
 
         <div class="panel-section">
+          <span class="label">COMBO</span>
+          <span class="value" id="combo">x1</span>
+          <p class="hint">Limpia líneas en turnos seguidos para multiplicar la puntuación (hasta x5). Las bombas y rayos no rompen la cadena.</p>
+        </div>
+
+        <div class="panel-section">
           <span class="label">NEXT</span>
           <canvas id="next-canvas" width="120" height="120"></canvas>
+        </div>
+
+        <div class="panel-section">
+          <span class="label">POWER-UP</span>
+          <p class="hint">💣 Bomba: al caer destruye un área 3×3 y los bloques de encima caen.</p>
+          <p class="hint">⚡ Rayo: limpia la fila o la columna donde cae; pulsa ↑ para girar su orientación.</p>
+          <p class="hint">Cada 10 líneas aparece un power-up, alternando bomba y rayo.</p>
         </div>
 
         <div class="panel-section controls">
